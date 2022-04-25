@@ -723,7 +723,7 @@ file_end(SCR *sp, EXF *ep, int force)
  * PUBLIC: int file_write(SCR *, MARK *, MARK *, char *, int);
  */
 int
-file_write(SCR *sp, MARK *fm, MARK *tm, char *name, int flags)
+file_write(SCR *sp, MARK *fm, MARK *tm, char *name, int flags, int cmd)
 {
 	enum { NEWFILE, OLDFILE } mtype;
 	struct stat sb;
@@ -947,7 +947,8 @@ file_write(SCR *sp, MARK *fm, MARK *tm, char *name, int flags)
 			*--s = '.';
 		}
 	}
-	msgq(sp, M_INFO, "%s", s);
+	if (cmd != 0)
+		msgq(sp, M_INFO, "%s", s);
 	if (nf)
 		FREE_SPACE(sp, p, 0);
 	return (0);
@@ -1319,7 +1320,7 @@ file_aw(SCR *sp, int flags)
 		    "File readonly, modifications not auto-written");
 		return (1);
 	}
-	return (file_write(sp, NULL, NULL, NULL, flags));
+	return (file_write(sp, NULL, NULL, NULL, flags, 0));
 }
 
 /*

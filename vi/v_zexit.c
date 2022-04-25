@@ -34,7 +34,7 @@ v_zexit(SCR *sp, VICMD *vp)
 {
 	/* Write back any modifications. */
 	if (F_ISSET(sp->ep, F_MODIFIED) &&
-	    file_write(sp, NULL, NULL, NULL, FS_ALL))
+	    file_write(sp, NULL, NULL, NULL, FS_ALL, 2))
 		return (1);
 
 	/* Check to make sure it's not a temporary file. */

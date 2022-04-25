@@ -189,7 +189,7 @@ exwr(SCR *sp, EXCMD *cmdp, enum which cmd)
 	/* If no other arguments, just write the file back. */
 	if (cmdp->argc == 0 || *p == '\0')
 		return (file_write(sp,
-		    &cmdp->addr1, &cmdp->addr2, NULL, flags));
+		    &cmdp->addr1, &cmdp->addr2, NULL, flags, cmd));
 
 	/* Build an argv so we get an argument count and file expansion. */
 	if (argv_exp2(sp, cmdp, p, strlen(p)))
@@ -247,7 +247,7 @@ exwr(SCR *sp, EXCMD *cmdp, enum which cmd)
 		return (1);
 	}
 
-	return (file_write(sp, &cmdp->addr1, &cmdp->addr2, name, flags));
+	return (file_write(sp, &cmdp->addr1, &cmdp->addr2, name, flags, cmd));
 }
 
 /*

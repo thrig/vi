@@ -10,7 +10,7 @@ int del(SCR *, MARK *, MARK *, int);
 FREF *file_add(SCR *, CHAR_T *);
 int file_init(SCR *, FREF *, char *, int);
 int file_end(SCR *, EXF *, int);
-int file_write(SCR *, MARK *, MARK *, char *, int);
+int file_write(SCR *, MARK *, MARK *, char *, int, int);
 int file_m1(SCR *, int, int);
 int file_m2(SCR *, int);
 int file_m3(SCR *, int);
