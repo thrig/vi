@@ -51,7 +51,6 @@ CLEANFILES += options_def.h ex_def.h
 
 .PATH: ${.CURDIR}/../vi ${.CURDIR}/../ex ${.CURDIR}/../cl ${.CURDIR}/../common ${.CURDIR}/../docs/USD.doc/vi.man
 
-.include "../../Makefile.inc"
 .include <bsd.prog.mk>
 
 afterinstall:
