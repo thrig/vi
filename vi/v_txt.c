@@ -542,6 +542,7 @@ next:	if (v_event_get(sp, evp, 0, ec_flags))
 	 * This was not documented as far as I know, and is a great test of vi
 	 * clones.
 	 */
+/* meh
 	if (LF_ISSET(TXT_RECORD) && rcol == 0 && evp->e_c == '\0') {
 		if (vip->rep == NULL)
 			goto done;
@@ -551,7 +552,7 @@ next:	if (v_event_get(sp, evp, 0, ec_flags))
 		LF_SET(TXT_REPLAY);
 		goto replay;
 	}
-
+*/
 	/*
 	 * File name completion and colon command-line editing.   We don't
 	 * have enough meta characters, so we expect people to overload
