@@ -1,5 +1,5 @@
 *.core
-build/*.*
+build/*.o
 build/obj/
 build/vi
 ktrace.out
