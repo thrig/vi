@@ -104,35 +104,6 @@ ex_getline(SCR *sp, FILE *fp, size_t *lenp)
 }
 
 /*
- * ex_ncheck --
- *	Check for more files to edit.
- *
- * PUBLIC: int ex_ncheck(SCR *, int);
- */
-int
-ex_ncheck(SCR *sp, int force)
-{
-	char **ap;
-
-	/*
-	 * !!!
-	 * Historic practice: quit! or two quit's done in succession
-	 * (where ZZ counts as a quit) didn't check for other files.
-	 */
-	if (!force && sp->ccnt != sp->q_ccnt + 1 &&
-	    sp->cargv != NULL && sp->cargv[1] != NULL) {
-		sp->q_ccnt = sp->ccnt;
-
-		for (ap = sp->cargv + 1; *ap != NULL; ++ap);
-		msgq(sp, M_ERR,
-		    "%d more files to edit", (ap - sp->cargv) - 1);
-
-		return (1);
-	}
-	return (0);
-}
-
-/*
  * ex_init --
  *	Init the screen for ex.
  *

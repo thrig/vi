@@ -108,7 +108,6 @@ int ex_viusage(SCR *, EXCMD *);
 void ex_cinit(EXCMD *, int, int, recno_t, recno_t, int, ARGS **);
 void ex_cadd(EXCMD *, ARGS *, char *, size_t);
 int ex_getline(SCR *, FILE *, size_t *);
-int ex_ncheck(SCR *, int);
 int ex_init(SCR *);
 void ex_emsg(SCR *, char *, exm_t);
 int ex_version(SCR *, EXCMD *);

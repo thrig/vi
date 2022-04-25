@@ -33,8 +33,8 @@ ex_quit(SCR *sp, EXCMD *cmdp)
 
 	force = FL_ISSET(cmdp->iflags, E_C_FORCE);
 
-	/* Check for file modifications, or more files to edit. */
-	if (file_m2(sp, force) || ex_ncheck(sp, force))
+	/* Check for file modifications. */
+	if (file_m2(sp, force))
 		return (1);
 
 	F_SET(sp, force ? SC_EXIT_FORCE : SC_EXIT);

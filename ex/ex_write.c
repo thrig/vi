@@ -68,9 +68,6 @@ ex_wq(SCR *sp, EXCMD *cmdp)
 
 	force = FL_ISSET(cmdp->iflags, E_C_FORCE);
 
-	if (ex_ncheck(sp, force))
-		return (1);
-
 	F_SET(sp, force ? SC_EXIT_FORCE : SC_EXIT);
 	return (0);
 }
@@ -108,9 +105,6 @@ ex_xit(SCR *sp, EXCMD *cmdp)
 		return (1);
 
 	force = FL_ISSET(cmdp->iflags, E_C_FORCE);
-
-	if (ex_ncheck(sp, force))
-		return (1);
 
 	F_SET(sp, force ? SC_EXIT_FORCE : SC_EXIT);
 	return (0);

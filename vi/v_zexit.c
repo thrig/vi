@@ -41,10 +41,6 @@ v_zexit(SCR *sp, VICMD *vp)
 	if (file_m3(sp, 0))
 		return (1);
 
-	/* Check for more files to edit. */
-	if (ex_ncheck(sp, 0))
-		return (1);
-
 	F_SET(sp, SC_EXIT);
 	return (0);
 }
