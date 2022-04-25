@@ -242,16 +242,16 @@ EXCMDLIST const cmds[] = {
 	    "ca1",
 	    "[line [,line]] p[rint] [count] [#l]",
 	    "display lines"},
-/* C_PRESERVE */
-	{"preserve",	ex_preserve,	0,
-	    "",
-	    "pre[serve]",
-	    "preserve an edit session for recovery"},
 /* C_PREVIOUS */
 	{"previous",	ex_prev,	E_NEWSCREEN,
 	    "!",
 	    "prev[ious][!]",
 	    "edit the previous file in the file argument list"},
+/* C_PRESERVE */
+	{"preserve",	ex_preserve,	0,
+	    "",
+	    "pre[serve]",
+	    "preserve an edit session for recovery"},
 /* C_PUT */
 	{"put",		ex_put,	
 	    E_ADDR1|E_AUTOPRINT|E_ADDR_ZERO|E_ADDR_ZERODEF,
