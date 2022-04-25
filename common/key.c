@@ -650,7 +650,8 @@ not_digit:	argp->e_c = CH_NOT_DIGIT;
 	}
 
 	/* Find out if the initial segments are identical. */
-	init_nomap = !e_memcmp(qp->output, &gp->i_event[gp->i_next], qp->ilen);
+	if (qp->output)
+		init_nomap = !e_memcmp(qp->output, &gp->i_event[gp->i_next], qp->ilen);
 
 	/* Delete the mapped characters from the queue. */
 	QREM(qp->ilen);
