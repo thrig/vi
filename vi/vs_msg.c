@@ -677,7 +677,8 @@ vs_resolve(SCR *sp, SCR *csp, int forcewait)
 	}
 
 	/* Report on line modifications. */
-	mod_rpt(sp);
+	// KLUGE need a better way to hide the mod when also a pipe failure
+	//mod_rpt(sp);
 
 	/*
 	 * Flush any saved messages.  If the screen isn't ready, refresh
