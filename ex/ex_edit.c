@@ -86,8 +86,10 @@ ex_edit(SCR *sp, EXCMD *cmdp)
 	 *
 	 * !!!
 	 * Contrary to POSIX 1003.2-1992, autowrite did not affect :edit.
+	 * !!!
+	 * Contrary to the above, autowrite does affect :edit
 	 */
-	if (file_m2(sp, FL_ISSET(cmdp->iflags, E_C_FORCE)))
+	if (file_m1(sp, FL_ISSET(cmdp->iflags, E_C_FORCE), FS_ALL | FS_POSSIBLE))
 		return (1);
 
 	/* Switch files. */
