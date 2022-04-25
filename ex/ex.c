@@ -406,9 +406,8 @@ loop:	ecp = LIST_FIRST(&gp->ecq);
 		 * up to a l, p, +, - or # character can break this code.
 		 *
 		 * !!!
-		 * Capital letters beginning the command names ex, edit,
-		 * next, previous, tag and visual (in vi mode) indicate the
-		 * command should happen in a new screen.
+		 * Capital letters indicate the SHIFT key was lingered on;
+		 * unlike historic vi some are lowercased.
 		 */
 		switch (p[0]) {
 		case 'd':
@@ -425,8 +424,9 @@ loop:	ecp = LIST_FIRST(&gp->ecq);
 				goto skip_srch;
 			}
 			break;
-		case 'E': case 'F': case 'N': case 'P': case 'T': case 'V':
-			newscreen = 1;
+		case 'W':
+			if (p[1] == 'N') p[1] = 'n';
+		case 'E': case 'F': case 'N': case 'P': case 'T': case 'V': case 'Q': case 'S':
 			p[0] = tolower(p[0]);
 			break;
 		}
