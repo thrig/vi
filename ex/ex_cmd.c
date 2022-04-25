@@ -245,12 +245,12 @@ EXCMDLIST const cmds[] = {
 /* C_PREVIOUS */
 	{"previous",	ex_prev,	E_NEWSCREEN,
 	    "!",
-	    "prev[ious][!]",
+	    "pre[vious][!]",
 	    "edit the previous file in the file argument list"},
 /* C_PRESERVE */
 	{"preserve",	ex_preserve,	0,
 	    "",
-	    "pre[serve]",
+	    "pres[erve]",
 	    "preserve an edit session for recovery"},
 /* C_PUT */
 	{"put",		ex_put,	
