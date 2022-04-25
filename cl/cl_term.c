@@ -43,27 +43,27 @@ typedef struct _tklist {
 static TKLIST const c_tklist[] = {	/* Command mappings. */
 	{"kil1",	"O",	"insert line"},
 	{"kdch1",	"x",	"delete character"},
-	{"kcud1",	"j",	"cursor down"},
+	{"kcud1",	NULL,	"cursor down"},
 	{"kel",		"D",	"delete to eol"},
 	{"kind",     "\004",	"scroll down"},			/* ^D */
 	{"kll",		"$",	"go to eol"},
 	{"khome",	"^",	"go to sol"},
 	{"kich1",	"i",	"insert at cursor"},
 	{"kdl1",       "dd",	"delete line"},
-	{"kcub1",	"h",	"cursor left"},
+	{"kcub1",	NULL,	"cursor left"},
 	{"knp",	     "\006",	"page down"},			/* ^F */
 	{"kpp",	     "\002",	"page up"},			/* ^B */
 	{"kri",	     "\025",	"scroll up"},			/* ^U */
 	{"ked",	       "dG",	"delete to end of screen"},
-	{"kcuf1",	"l",	"cursor right"},
-	{"kcuu1",	"k",	"cursor up"},
+	{"kcuf1",	NULL,	"cursor right"},
+	{"kcuu1",	NULL,	"cursor up"},
 	{NULL, NULL, NULL},
 };
 static TKLIST const m1_tklist[] = {	/* Input mappings (set or delete). */
-	{"kcud1",  "\033ja",	"cursor down"},			/* ^[ja */
-	{"kcub1",  "\033ha",	"cursor left"},			/* ^[ha */
-	{"kcuu1",  "\033ka",	"cursor up"},			/* ^[ka */
-	{"kcuf1",  "\033la",	"cursor right"},		/* ^[la */
+	{"kcud1",  NULL,	"cursor down"},			/* ^[ja */
+	{"kcub1",  NULL,	"cursor left"},			/* ^[ha */
+	{"kcuu1",  NULL,	"cursor up"},			/* ^[ka */
+	{"kcuf1",  NULL,	"cursor right"},		/* ^[la */
 	{NULL, NULL, NULL},
 };
 
@@ -85,7 +85,7 @@ cl_term_init(SCR *sp)
 		if ((t = tigetstr(tkp->ts)) == NULL || t == (char *)-1)
 			continue;
 		if (seq_set(sp, tkp->name, strlen(tkp->name), t, strlen(t),
-		    tkp->output, strlen(tkp->output), SEQ_COMMAND,
+		    tkp->output, tkp->output ? strlen(tkp->output) : 0, SEQ_COMMAND,
 		    SEQ_NOOVERWRITE | SEQ_SCREEN))
 			return (1);
 	}
@@ -103,16 +103,10 @@ cl_term_init(SCR *sp)
 		 */
 		if (!strcmp(t, "\b"))
 			continue;
-		if (tkp->output == NULL) {
-			if (seq_set(sp, tkp->name, strlen(tkp->name),
-			    t, strlen(t), NULL, 0,
-			    SEQ_INPUT, SEQ_NOOVERWRITE | SEQ_SCREEN))
-				return (1);
-		} else
-			if (seq_set(sp, tkp->name, strlen(tkp->name),
-			    t, strlen(t), tkp->output, strlen(tkp->output),
-			    SEQ_INPUT, SEQ_NOOVERWRITE | SEQ_SCREEN))
-				return (1);
+		if (seq_set(sp, tkp->name, strlen(tkp->name),
+			t, strlen(t), tkp->output, tkp->output ? strlen(tkp->output) : 0,
+			SEQ_INPUT, SEQ_NOOVERWRITE | SEQ_SCREEN))
+			return (1);
 	}
 
 	/*
