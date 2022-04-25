@@ -1,4 +1,5 @@
 *.core
+build/*.gz
 build/*.o
 build/obj/
 build/vi
