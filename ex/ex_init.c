@@ -237,7 +237,7 @@ ex_run_str(SCR *sp, char *name, char *str, size_t len, int ex_flags,
 static enum rc
 exrc_isok(SCR *sp, struct stat *sbp, int *fdp, char *path)
 {
-	if ((*fdp = open(path, O_RDONLY, 0)) < 0) {
+	if ((*fdp = open(path, O_RDONLY)) < 0) {
 		if (errno == ENOENT)
 			return (NOEXIST);
 
