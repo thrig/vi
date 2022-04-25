@@ -392,6 +392,9 @@ cl_vi_end(GS *gp)
 
 	/* End curses window. */
 	(void)endwin();
+	/* KLUGE failed ex commands may gunk up the non-alternative screen,
+	 * at least clear the line */
+	write(STDOUT_FILENO, "\033[2K", 4);
 
 	/* Free the SCREEN created by newterm(3). */
 	delscreen(set_term(NULL));
