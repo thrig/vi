@@ -10,6 +10,7 @@ void ex_badaddr
 int ex_abbr(SCR *, EXCMD *);
 int ex_unabbr(SCR *, EXCMD *);
 int ex_append(SCR *, EXCMD *);
+int ex_buffer(SCR *, EXCMD *);
 int ex_change(SCR *, EXCMD *);
 int ex_insert(SCR *, EXCMD *);
 int ex_next(SCR *, EXCMD *);

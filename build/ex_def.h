@@ -12,6 +12,7 @@ enum {
 	C_ABBR,
 	C_ARGS,
 	C_BG,
+	C_BUFFER,
 	C_CHANGE,
 	C_CD,
 	C_CHDIR,

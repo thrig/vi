@@ -112,6 +112,11 @@ EXCMDLIST const cmds[] = {
 	    "",
 	    "bg",
 	    "put the current screen into the background"},
+/* C_BUFFER */
+	{"buffer",		ex_buffer,		0,
+	    "Ws",
+	    "buffer string",
+	    "alter a named buffer"},
 /* C_CHANGE */
 	{"change",	ex_change,	E_ADDR2|E_ADDR_ZERODEF,
 	    "!ca",
