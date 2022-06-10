@@ -110,11 +110,13 @@ ex_join(SCR *sp, EXCMD *cmdp)
 			if (isblank(echar))
 				for (; len && isblank(*p); --len, ++p);
 			else if (p[0] != ')') {
+				/* meh
 				if (strchr(".?!", echar)) {
 					*tbp++ = ' ';
 					++clen;
 					extra = 1;
 				}
+				*/
 				*tbp++ = ' ';
 				++clen;
 				for (; len && isblank(*p); --len, ++p);
